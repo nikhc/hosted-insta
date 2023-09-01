@@ -3,20 +3,19 @@ const userModel=require("../models/user")
 const cors=require("cors")
 const jwt=require("jsonwebtoken")
 const protectroute=require("./nik")
+const {sendMail}=require("./nodemailer")
 const bcrypt=require("bcrypt");
 const jwt_key="jdfbvknkinfvnon"
-const sendMail=require("./nodemailer")
 useRouter=express.Router();
-
 useRouter.use(cors())
 useRouter.use(express.urlencoded({ extended: true}))
 useRouter.post('/signup',async (req,res)=>{
     console.log(req.body)
-    console.log(req.name)
+    console.log(req.body.name)
     try{
     const user = await userModel.create(req.body);
     console.log(user)
-    sendMail(signup,user)
+    sendMail("signup",user)
     res.json({
      data:"you are successfully signup"
     })

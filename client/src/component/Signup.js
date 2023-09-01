@@ -20,6 +20,8 @@ export default function Signup() {
 
       const response = await axios.post('/user/signup', nik);
 
+      console.log(response+ "jhjhbjhb")
+
       if (response.data.data) {
         M.toast({
           html: response.data.data,
