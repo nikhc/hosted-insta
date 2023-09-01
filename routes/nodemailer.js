@@ -21,7 +21,7 @@ console.log("dhjsbjhbdsjhbc")
     var Osubject,Otext,Ohtml;
     if(str=="signup"){
         Osubject=`thankyou for signning ${data.name}`
-        Ohtml=`<h1>welcome bro welcome</h1>
+        Ohtml=`<h1> bro welcome</h1>
         name-${data.name}`
         console.log("mnds jh jhsds jbjdsbcjbds")
     }
