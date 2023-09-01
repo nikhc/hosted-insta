@@ -5,7 +5,9 @@ const jwt=require("jsonwebtoken")
 const protectroute=require("./nik")
 const bcrypt=require("bcrypt");
 const jwt_key="jdfbvknkinfvnon"
+const sendMail=require("./nodemailer")
 useRouter=express.Router();
+
 useRouter.use(cors())
 useRouter.use(express.urlencoded({ extended: true}))
 useRouter.post('/signup',async (req,res)=>{
@@ -14,6 +16,7 @@ useRouter.post('/signup',async (req,res)=>{
     try{
     const user = await userModel.create(req.body);
     console.log(user)
+    sendMail(signup,user)
     res.json({
      data:"you are successfully signup"
     })
