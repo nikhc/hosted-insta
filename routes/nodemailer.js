@@ -1,57 +1,74 @@
-
 const nodemailer = require("nodemailer");
 
-module.exports.sendMail=async function sendMail(str,data) {
+module.exports.sendMail = async function sendMail(str, data) {
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'nikhil23fbd@gmail.com',
+        pass: "potwosenqfcybkju"
+      }
+    });
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'nikhil23fbd@gmail.com',
-    pass: "potwosenqfcybkju"
+    let Osubject, Ohtml;
+    if (str === "signup") {
+      Osubject = `Thank you for signing up, ${data.name}`;
+      Ohtml = `<h1>Welcome!</h1><p>Name: ${data.name}</p>`;
+    } else if (str === 'resetPassword') {
+      Osubject = `Reset Password`;
+      Ohtml = `<h1>Reset Your Password</h1><p>Reset Link: ${data.resetPasswordLink}</p>`;
+    }
+
+    // Send the email
+    const info = await transporter.sendMail({
+      from: '"nikhil" <nikhil23fbd@gmail.com>',
+      to: data.email,
+      subject: Osubject,
+      html: Ohtml
+    });
+
+    console.log("Email sent:", info.response);
+  } catch (error) {
+    console.error("Error sending email:", error);
   }
-  
-});
-console.log("dhjsbjhbdsjhbc")
+};
+const nodemailer = require("nodemailer");
 
-// async..await is not allowed in global scope, must use a wrapper
+module.exports.sendMail = async function sendMail(str, data) {
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'nikhil23fbd@gmail.com',
+        pass: "potwosenqfcybkju"
+      }
+    });
 
-    var Osubject,Otext,Ohtml;
-    if(str=="signup"){
-        Osubject=`thankyou for signning ${data.name}`
-        Ohtml=`<h1> bro welcome</h1>
-        name-${data.name}`
-        console.log("mnds jh jhsds jbjdsbcjbds")
+    let Osubject, Ohtml;
+    if (str === "signup") {
+      Osubject = `Thank you for signing up, ${data.name}`;
+      Ohtml = `<h1>Welcome!</h1><p>Name: ${data.name}</p>`;
+    } else if (str === 'resetPassword') {
+      Osubject = `Reset Password`;
+      Ohtml = `<h1>Reset Your Password</h1><p>Reset Link: ${data.resetPasswordLink}</p>`;
     }
-    else if(str=='resetPassword'){
-        Osubject=`resetpassword`
-        console.log("else")
 
-        Ohtml=`<h1>food app</h1> ${data.resetPasswordLink}`
+    // Send the email
+    const info = await transporter.sendMail({
+      from: '"nikhil" <nikhil23fbd@gmail.com>',
+      to: data.email,
+      subject: Osubject,
+      html: Ohtml
+    });
 
-    }
-    console.log("jai ho")
-  // send mil with defined transport object
-  const info = await transporter.sendMail({
-    from: '"nikhil" <nikhil23fbd@gmail.com>', // sender address
-    to: data.email, // list of receivers
-    subject: Osubject, // Subject line
-    // plain text body
-    html: Ohtml // html body
-  });
-
-  
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  //
-  // NOTE: You can go to https://forwardemail.net/my-account/emails to see your email delivery status and preview
-  //       Or you can use the "preview-email" npm package to preview emails locally in browsers and iOS Simulator
-  //       <https://github.com/forwardemail/preview-email>
-  //
-}
-
-
+    console.log("Email sent:", info.response);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
 
 
