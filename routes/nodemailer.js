@@ -2,15 +2,16 @@ const nodemailer = require("nodemailer");
 
 module.exports.sendMail = async function sendMail(str, data) {
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+    const smtpConfig = {
+      host: process.env.SMTP_HOST || "smtp.gmail.com",
+      port: process.env.SMTP_PORT || 587,
+      secure: process.env.SMTP_SECURE === "true", // Set to "true" for secure connection
       auth: {
-        user: 'nikhil23fbd@gmail.com',
-        pass: "potwosenqfcybkju"
+        user: process.env.SMTP_USER || 'nikhil23fbd@gmail.com',
+        pass: process.env.SMTP_PASSWORD || "potwosenqfcybkju"
       }
-    });
+    };
+    const transporter = nodemailer.createTransport(smtpConfig);
 
     let Osubject, Ohtml;
     if (str === "signup") {
