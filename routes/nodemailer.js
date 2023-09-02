@@ -3,12 +3,12 @@ const nodemailer = require("nodemailer");
 module.exports.sendMail = async function sendMail(str, data) {
   try {
     const smtpConfig = {
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: process.env.SMTP_PORT || 587,
-      secure: process.env.SMTP_SECURE === "true", // Set to "true" for secure connection
+      host: process.env.SMTP_HOST ,
+      port: process.env.SMTP_PORT ,
+      secure: process.env.SMTP_SECURE , // Set to "true" for secure connection
       auth: {
-        user: process.env.SMTP_USER || 'nikhil23fbd@gmail.com',
-        pass: process.env.SMTP_PASSWORD || "potwosenqfcybkju"
+        user: process.env.SMTP_USER ,
+        pass: process.env.SMTP_PASSWORD 
       }
     };
     const transporter = nodemailer.createTransport(smtpConfig);
