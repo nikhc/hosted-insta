@@ -3,7 +3,8 @@ const userModel=require("../models/user")
 const cors=require("cors")
 const jwt=require("jsonwebtoken")
 const protectroute=require("./nik")
-const sendMail=require("./nodemailer")
+// const sendMail=require("./nodemailer")
+const nodemailer = require("nodemailer");
 const bcrypt=require("bcrypt");
 const jwt_key="jdfbvknkinfvnon"
 useRouter=express.Router();
@@ -15,7 +16,40 @@ useRouter.post('/signup',async (req,res)=>{
     try{
     const user = await userModel.create(req.body);
     console.log(user)
-    sendMail("signup",user)
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+          user: 'nikhil23fbd@gmail.com',
+          pass: "cpfdmitposeermuu"
+        }
+        
+      });
+      console.log("dhjsbjhbdsjhbc");
+      console.log("kjfbvkjndksnkndsncldsndocndlskncondslc")
+
+      
+      // async..await is not allowed in global scope, must use a wrapper
+      
+          var Osubject,Otext,Ohtml;
+        
+              Osubject=`thankyou for signning ${user.name}`
+              Ohtml=`<h1> bro welcome</h1>
+              name-${user.name}`
+              console.log("mnds jh jhsds jbjdsbcjbds")
+        
+          
+          console.log("jai ho")
+        // send mil with defined transport object
+        const info = await transporter.sendMail({
+          from: '"nikhil" <nikhil23fbd@gmail.com>', // sender address
+          to: user.email, // list of receivers
+          subject: Osubject, // Subject line
+          // plain text body
+          html: Ohtml // html body
+        });
     res.json({
      data:"you are successfully signup"
     })
