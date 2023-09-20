@@ -8,6 +8,7 @@ import Home from './component/Home';
 import Profile from './component/Profile';
 import UserProfile from './component/UserProfile';
 import FollowingPost from './component/FollowingPost';
+import Reset from './component/Reset';
 
 
 import CreatePost from './component/CreatePost';
@@ -64,6 +65,9 @@ const Routing=()=>{
 
   </Route>
   <Route path="/FollowingPost" element={<FollowingPost></FollowingPost>}>
+
+  </Route>
+  <Route path="/reset" element={<Reset></Reset>}>
 
   </Route>
   

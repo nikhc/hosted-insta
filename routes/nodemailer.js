@@ -5,12 +5,12 @@ module.exports.sendMail=async function sendMail(str,data) {
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
+  port: 465,
+  secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
     user: 'nikhil23fbd@gmail.com',
-    pass: "potwosenqfcybkju"
+    pass: "cpfdmitposeermuu"
   }
   
 });

@@ -2,6 +2,7 @@
 const mongoose=require("mongoose")
 const emailvalidator=require("email-validator")
 const bcrypt=require("bcrypt");
+const crypto=require("crypto")
 const {link} = require("../keys");
 
 
@@ -43,6 +44,9 @@ const userSchema=new mongoose.Schema({
     },
     follower:[{type:mongoose.Schema.ObjectId,ref:"userModel"}],
     following:[{type:mongoose.Schema.ObjectId,ref:"userModel"}],
+    resetToken:{
+        type:String
+    }
     
 })
 userSchema.pre('save',async function(){
@@ -50,6 +54,19 @@ userSchema.pre('save',async function(){
     let hashedString= await bcrypt.hash(this.Password,salt);
   this.Password=hashedString
 })
+userSchema.methods.createResetToken=function(){
+const resetToken=crypto.randomBytes(32).toString("hex");
+this.resetToken=resetToken;
+return resetToken;
+
+}
+userSchema.methods.resetpasswordhandler=function(Password){
+this.Password=Password;
+
+this.resetToken=undefined;
+
+
+}
 
 
 

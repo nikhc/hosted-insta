@@ -51,10 +51,11 @@ export default function Signin() {
   
   </button>
   <h1>
-    <Link to="/signup">i already have account</Link>
+    <Link to="/signup">I dont have account</Link>
+    <Link to="/reset">RsetPassword</Link>
 
   </h1>
-       
+        
       </div>
 
    </div>

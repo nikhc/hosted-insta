@@ -127,8 +127,10 @@ getData()
     <div className="home">
       {
         data.map(item=>(
-          <div className="card home-card">
+          <div className="card home-card">{
+            state._id==item.postedBy._id&&
              <i class="material-icons" style={{float:'right'}} onClick={()=>{deletePost(item._id)}}>delete</i>
+          }
    <h5><Link to={item.postedBy._id!=state._id?"/profile/"+item.postedBy._id:"/profile "}>{item.postedBy.name}</Link></h5>
    <div className="card-image">
     <img  src={item.photo}></img>

@@ -99,8 +99,9 @@ getData()
 
 
   }
-  const deletePost=(postId)=>{
-   const m= axios.delete(`/post/delete/${postId}`);
+  const deletePost= async (postId)=>{
+   const m=  await 
+   axios.delete(`/post/delete/${postId}`);
    const l=data.filter(item=>{
     if(item._id!=m.data.data._id){
       return m.data.data;
@@ -128,7 +129,10 @@ getData()
       {
         data.map(item=>(
           <div className="card home-card">
+            {
+              item.postedBy._id==state._id&&
              <i class="material-icons" style={{float:'right'}} onClick={()=>{deletePost(item._id)}}>delete</i>
+            }
       
    <h5>
   {state && item.postedBy && (

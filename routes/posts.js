@@ -217,7 +217,7 @@ try{
   }
   else{
    res.json({
-    error:"pls login bhai"
+    error:"this is not your post you cant delete it "
    })
   }
 }

@@ -88,10 +88,75 @@ useRouter.get("/logout",(req,res)=>{
    
 })
 
+ useRouter.post("/forgetPassword", async function (req,res){
+    let{email}=req.body;
 
 
-module.exports=useRouter;
+try{
+    const user=await userModel.findOne({email:email});
+    if(user){
+    const resetToken=user.createResetToken();
+    await user.save()
+    // set url
+    let  resetPasswordLink=`${req.protocol}://${req.get('host')}/user/resetPassword/${resetToken}`
+    let obj={
+        resetPasswordLink:resetPasswordLink,
+        email:email
+    }
+    sendMail("resetPassword",obj)
+    res.json({
+        data:user
+    })
+    }
+    else{
+        res.json({
+            message:'plas signup'
+        })
+    }
+}
+catch(err){
+    res.status(500).json({
+        message:err.message
+    
 
+    })
+   
+}
+})
+
+
+useRouter.post("/resetPassword/:token",async function (req,res){
+    try{
+    const token=req.param.token;
+    let {Password,confirmPassword}=req.body;
+    const user=await userModel.findOne({resetToken:token});
+    if(user){
+        user.resetpasswordhandler(Password,confirmPassword);
+        await user.save();
+        res.json({
+            msg:"user password changed successfully pls login again"
+        })
+
+    }
+    else{
+        res.json({
+            message:"user not found"
+
+        })
+    }
+   
+
+}
+catch(err){
+    res.json({
+        msg:err.message
+    })
+}
+
+})
+
+
+module.exports=useRouter
 
 
 
