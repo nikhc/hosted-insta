@@ -130,6 +130,7 @@ try{
     const user=await userModel.findOne({email:email});
     if(user){
     const resetToken=user.createResetToken();
+    user.expireToken=Date.now()+3600000
     await user.save()
     // set url
     let  resetPasswordLink=`${req.protocol}://${req.get('host')}/user/resetPassword/${resetToken}`

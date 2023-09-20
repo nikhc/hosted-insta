@@ -46,7 +46,9 @@ const userSchema=new mongoose.Schema({
     following:[{type:mongoose.Schema.ObjectId,ref:"userModel"}],
     resetToken:{
         type:String
-    }
+    },
+    expireToken:Date
+   
     
 })
 userSchema.pre('save',async function(){

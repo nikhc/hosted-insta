@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './component/Navbar';
-import { BrowserRouter,Route,Routes,useNavigate } from 'react-router-dom'
+import { BrowserRouter,Route,Routes,useNavigate,useLocation } from 'react-router-dom'
 import Signup from './component/Signup';
 import Signin from './component/Signin';
 import Home from './component/Home';
@@ -23,6 +23,8 @@ const Routing=()=>{
   const {state,dispatch}=useContext(userContext)
  
   const navigate=useNavigate()
+  const location = useLocation();
+
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"));
     console.log(user)
@@ -33,6 +35,7 @@ const Routing=()=>{
    
    }
    else{
+    if(!(location.pathname.startsWith('/reset')))
     navigate('/signin')
    }
 
