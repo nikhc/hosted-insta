@@ -1,7 +1,7 @@
 
 const nodemailer = require("nodemailer");
 
-module.exports.sendMail=async function sendMail(str,data) {
+async function sendMail(str,data) {
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -51,6 +51,8 @@ console.log("dhjsbjhbdsjhbc")
   //       <https://github.com/forwardemail/preview-email>
   //
 }
+
+module.exports=sendMail
 
 
 
