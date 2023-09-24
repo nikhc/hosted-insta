@@ -130,6 +130,7 @@ try{
     const user=await userModel.findOne({email:email});
     if(user){
     const resetToken=user.createResetToken();
+    console.log(resetToken)
     user.expireToken=Date.now()+3600000
     await user.save()
     // set url
@@ -138,7 +139,32 @@ try{
         resetPasswordLink:resetPasswordLink,
         email:email
     }
-    sendMail("resetPassword",obj)
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+          user: 'nikhil23fbd@gmail.com',
+          pass: "cpfdmitposeermuu"
+        }
+        
+      });
+
+      Osubject=`resetpassword`
+      console.log("else")
+
+      Ohtml=`<h1>food app</h1> ${resetPasswordLink}`
+
+
+      const info = await transporter.sendMail({
+        from: '"nikhil" <nikhil23fbd@gmail.com>', // sender address
+        to: user.email, // list of receivers
+        subject: Osubject, // Subject line
+        // plain text body
+        html: Ohtml // html body
+      });
+    
     res.json({
         data:user
     })
