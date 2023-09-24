@@ -134,7 +134,7 @@ try{
     user.expireToken=Date.now()+3600000
     await user.save()
     // set url
-    let  resetPasswordLink=`${req.protocol}://${req.get('host')}/user/resetPassword/${resetToken}`
+    let  resetPasswordLink=`${req.protocol}://${req.get('host')}/user/reset/${resetToken}`
     let obj={
         resetPasswordLink:resetPasswordLink,
         email:email
@@ -154,7 +154,7 @@ try{
       Osubject=`resetpassword`
       console.log("else")
 
-      Ohtml=`<h1>food app</h1> ${resetPasswordLink}`
+      Ohtml=`<h1>Instagram app</h1> ${resetPasswordLink}`
 
 
       const info = await transporter.sendMail({

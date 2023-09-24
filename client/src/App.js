@@ -74,7 +74,7 @@ const Routing=()=>{
   <Route  exact path="/reset" element={<Reset></Reset>}>
 
   </Route>
-  <Route path="/resetPassword/:token" element={<Correct></Correct>}>
+  <Route path="/reset/:token" element={<Correct></Correct>}>
 
 </Route>
   
