@@ -134,7 +134,7 @@ try{
     user.expireToken=Date.now()+3600000
     await user.save()
     // set url
-    let  resetPasswordLink=`${req.protocol}://${req.get('host')}/reset/${resetToken}`
+    let  resetPasswordLink=`https://instagram-clone.cyclic.app/reset/${resetToken}`
     let obj={
         resetPasswordLink:resetPasswordLink,
         email:email

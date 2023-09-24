@@ -21,14 +21,14 @@ export default function Correct() {
   const goto= async ()=>{
     try{
    
-    const m=await axios.post(`/resetPassword/${token}`,nik);
+    const m=await axios.post(`/user/resetPassword/${token}`,nik);
     console.log(m.data.data)
     
     if(m.data.data){
 
 
 
-    M.toast({html:"password reset ",classes:"#4a148c purple darken-4"});
+    M.toast({html:"password updated ",classes:"#4a148c purple darken-4"});
     navigate("/signin")
     }
     else{
@@ -51,11 +51,7 @@ export default function Correct() {
       <button className="btn waves-effect waves-light #4a148c purple darken-4"  onClick={goto} >ResetPassword
   
   </button>
-  <h1>
-    <Link to="/signup">I dont have account</Link>
-    <Link to="/reset">RsetPassword</Link>
-
-  </h1>
+  
         
       </div>
 
