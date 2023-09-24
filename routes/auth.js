@@ -189,10 +189,10 @@ catch(err){
 useRouter.post("/resetPassword/:token",async function (req,res){
     try{
     const token=req.param.token;
-    let {Password,confirmPassword}=req.body;
+    let {Password}=req.body;
     const user=await userModel.findOne({resetToken:token});
     if(user){
-        user.resetpasswordhandler(Password,confirmPassword);
+        user.resetpasswordhandler(Password);
         await user.save();
         res.json({
             msg:"user password changed successfully pls login again"

@@ -73,6 +73,9 @@ const Routing=()=>{
   <Route path="/reset" element={<Reset></Reset>}>
 
   </Route>
+  <Route path="/resetPassword/:token" element={<Reset></Reset>}>
+
+</Route>
   
 
   </Routes>
