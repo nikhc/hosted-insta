@@ -190,18 +190,18 @@ useRouter.post("/resetPassword/:token",async function (req,res){
     try{
     const token=req.param.token;
     let {Password}=req.body;
-    const user=await userModel.findOne({resetToken:token});
+    const user=await userModel.findOne({resetToken:token,expireToken:{$gt:Date.now()}});
     if(user){
         user.resetpasswordhandler(Password);
         await user.save();
         res.json({
-            msg:"user password changed successfully pls login again"
+            data:"user password changed successfully pls login again"
         })
 
     }
     else{
         res.json({
-            message:"user not found"
+            data:"user not found"
 
         })
     }

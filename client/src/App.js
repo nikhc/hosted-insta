@@ -9,6 +9,7 @@ import Profile from './component/Profile';
 import UserProfile from './component/UserProfile';
 import FollowingPost from './component/FollowingPost';
 import Reset from './component/Reset';
+import Correct from './component/Correct';
 
 
 import CreatePost from './component/CreatePost';
@@ -70,10 +71,10 @@ const Routing=()=>{
   <Route path="/FollowingPost" element={<FollowingPost></FollowingPost>}>
 
   </Route>
-  <Route path="/reset" element={<Reset></Reset>}>
+  <Route  exact path="/reset" element={<Reset></Reset>}>
 
   </Route>
-  <Route path="/resetPassword/:token" element={<Reset></Reset>}>
+  <Route path="/resetPassword/:token" element={<Correct></Correct>}>
 
 </Route>
   

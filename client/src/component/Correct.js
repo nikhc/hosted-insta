@@ -28,8 +28,8 @@ export default function Correct() {
 
 
 
-    M.toast({html:"signin success",classes:"#4a148c purple darken-4"});
-    navigate("/")
+    M.toast({html:"password reset ",classes:"#4a148c purple darken-4"});
+    navigate("/signin")
     }
     else{
       M.toast({html:m.data.error,classes:"#4a148c purple darken-4"});
@@ -48,7 +48,7 @@ export default function Correct() {
       <h2>instagram</h2>
       
       <input type="password" placeholder='password' value={nik.Password}  onChange={(e)=>nikhil({...nik,Password:e.target.value})}/>
-      <button className="btn waves-effect waves-light #4a148c purple darken-4"  onClick={goto} >login
+      <button className="btn waves-effect waves-light #4a148c purple darken-4"  onClick={goto} >ResetPassword
   
   </button>
   <h1>

@@ -50,11 +50,12 @@ export default function Signin() {
       <button className="btn waves-effect waves-light #4a148c purple darken-4"  onClick={goto} >login
   
   </button>
-  <h1>
-    <Link to="/signup">I dont have account</Link>
+  <h3>
+    <div><Link to="/signup">I dont have account</Link></div>
+    
     <Link to="/reset">RsetPassword</Link>
 
-  </h1>
+  </h3>
         
       </div>
 
