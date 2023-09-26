@@ -39,7 +39,7 @@ postRouter.post("/createpost",async function(req,res){
 
 postRouter.get("/allposts", async function(req,res){
     try{
-        let data=   await postModel.find();
+        let data=   await postModel.find().sort("-createdAt");
         console.log(data)
 
  res.json({
@@ -60,7 +60,7 @@ postRouter.get("/allposts", async function(req,res){
 
 postRouter.get("/myallposts", async function(req,res){
     try{
-        let data=   await postModel.find({postedBy:{$in:req.user.following}});
+        let data=   await postModel.find({postedBy:{$in:req.user.following}}).sort("-crratedAt");
         console.log(data)
 
  res.json({

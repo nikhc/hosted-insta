@@ -40,6 +40,8 @@ const postSchema=new mongoose.Schema({
     comment:[{text:{type:String},postedBy:{type:mongoose.Schema.ObjectId,ref:"userModel"}}],
     
 
+},{
+    timestamps:true
 })
 postSchema.pre(/^find/,function(next){
     this.populate({
