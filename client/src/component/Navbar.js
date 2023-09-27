@@ -64,12 +64,12 @@ export default function Navbar() {
     
   }
 
-  const fetchusers= async (query)=>{
-    setSearch(query)
-   const m= await axios.post("/user/serch-user",{query});
-   console.log(m.data.data)
+  // const fetchusers= async (query)=>{
+  //   setSearch(query)
+  //  const m= await axios.post("/user/serch-user",{query});
+  //  console.log(m.data.data)
   
-  }
+  // }
   return (
     
          <nav>
@@ -81,7 +81,7 @@ export default function Navbar() {
     </div>
     <div id="modal1" className="modal" ref={searchModel} style={{color:"black"}}>
     <div className="modal-content">
-    <input type="email" placeholder='search users'  value={search}  onChange={(e)=>{fetchusers(e.target.value)}}/>
+    <input type="email" placeholder='search users'  value={search}  onChange={(e)=>{setSearch(e.target.value)}}/>
     
     <ul className="collection">
       <li className="collection-item">Alvin</li>
