@@ -215,6 +215,26 @@ catch(err){
 }
 
 })
+useRouter.post("/serch-user" ,async (req,res)=>{
+    try{
+
+    
+    let userPattern=new RegExp("^"+req.body.query);
+  const m= await  userModel.find({email:{$regex:userPattern}});
+  res.json({
+    data:m
+
+  })
+}
+catch(err){
+    res.json({
+        error:err.message
+
+    })
+   
+}
+
+})
 
 
 module.exports=useRouter

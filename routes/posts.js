@@ -60,7 +60,7 @@ postRouter.get("/allposts", async function(req,res){
 
 postRouter.get("/myallposts", async function(req,res){
     try{
-        let data=   await postModel.find({postedBy:{$in:req.user.following}}).sort("-crratedAt");
+        let data=   await postModel.find({postedBy:{$in:req.user.following}})
         console.log(data)
 
  res.json({
@@ -80,7 +80,7 @@ postRouter.get("/myallposts", async function(req,res){
 postRouter.get("/mypost",async function(req,res){
     console.log(req.id)
     try{
-       const m=  await postModel.find();
+       const m=  await postModel.find().sort("-crratedAt");;
        
       const l= m.filter((a)=>a.postedBy._id==req.id)
       console.log(l)
