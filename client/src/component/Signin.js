@@ -44,7 +44,7 @@ export default function Signin() {
   return (
    <div className="mycard">
     <div className="card  auth-card">
-      <h2>instagram</h2>
+      <h2>Chatgram</h2>
       <input type="email" placeholder='email'  value={nik.email}  onChange={(e)=>nikhil({...nik,email:e.target.value})}/>
       <input type="password" placeholder='password' value={nik.Password}  onChange={(e)=>nikhil({...nik,Password:e.target.value})}/>
       <button className="btn waves-effect waves-light #4a148c purple darken-4"  onClick={goto} >login

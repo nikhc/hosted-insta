@@ -75,7 +75,7 @@ export default function Navbar() {
     
          <nav>
     <div className="nav-wrapper white " >
-      <Link to={state?"/":"/signin"}className="brand-logo left   ">instagram</Link>
+      <Link to={state?"/":"/signin"}className="brand-logo left   ">Chatgram</Link>
       <ul id="nav-mobile" className="right ">
        {renderList()}
       </ul>
