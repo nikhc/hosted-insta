@@ -8,6 +8,7 @@ import M from 'materialize-css'
 
 export default function Navbar() {
   const[search,setSearch]=useState('')
+  const[nik,nikhil]=useState([])
   const searchModel=useRef(null)
   const {state,dispatch}=useContext(userContext)
   useEffect(()=>{
@@ -64,12 +65,12 @@ export default function Navbar() {
     
   }
 
-  // const fetchusers= async (query)=>{
-  //   setSearch(query)
-  //  const m= await axios.post("/user/serch-user",{query});
-  //  console.log(m.data.data)
+  const fetchusers= async (query)=>{
+    setSearch(query)
+   const m= await axios.post("/user/search-user",{query});
+   nikhil(m.data.data)
   
-  // }
+  }
   return (
     
          <nav>
@@ -81,18 +82,18 @@ export default function Navbar() {
     </div>
     <div id="modal1" className="modal" ref={searchModel} style={{color:"black"}}>
     <div className="modal-content">
-    <input type="email" placeholder='search users'  value={search}  onChange={(e)=>{setSearch(e.target.value)}}/>
+    <input type="email" placeholder='search users'  value={search}  onChange={(e)=>{fetchusers(e.target.value)}}/>
     
     <ul className="collection">
-      <li className="collection-item">Alvin</li>
-      <li className="collection-item">Alvin</li>
-      <li className="collection-item">Alvin</li>
-      <li className="collection-item">Alvin</li>
+      {
+        nik.map((n)=><Link to=""><li className="collection-item">{n.email}</li></Link>)
+      }
+   
     </ul>
      
     </div>
     <div className="modal-footer">
-      <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <button className="modal-close waves-effect waves-green btn-flat" onClick={()=>setSearch(" ")}></button>
     </div>
   </div>
   </nav>

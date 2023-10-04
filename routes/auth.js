@@ -215,7 +215,7 @@ catch(err){
 }
 
 })
-useRouter.post("/serch-user" ,async (req,res)=>{
+useRouter.post("/search-user" ,async (req,res)=>{
     try{
 
     
