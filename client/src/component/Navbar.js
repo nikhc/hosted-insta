@@ -68,6 +68,7 @@ export default function Navbar() {
   const fetchusers= async (query)=>{
     setSearch(query)
    const m= await axios.post("/user/search-user",{query});
+   console.log(m)
    nikhil(m.data.data)
   
   }
@@ -86,7 +87,7 @@ export default function Navbar() {
     
     <ul className="collection">
       {
-        nik.map((n)=><Link to={n.postedBy._id !== state._id ? "/profile/" + n.postedBy._id : "/profile "}><li className="collection-item">{n.email}</li></Link>)
+        nik.map((n)=><Link to=""><li className="collection-item">{n.email}</li></Link>)
       }
    
     </ul>
