@@ -80,7 +80,7 @@ postRouter.get("/myallposts", async function(req,res){
 postRouter.get("/mypost",async function(req,res){
     console.log(req.id)
     try{
-       const m=  await postModel.find().sort("-crratedAt");;
+       const m=  await postModel.find().sort("-createdAt");;
        
       const l= m.filter((a)=>a.postedBy._id==req.id)
       console.log(l)

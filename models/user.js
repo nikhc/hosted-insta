@@ -9,6 +9,7 @@ const {link} = require("../keys");
 
 
 (async function(){
+    
 
   const response = await mongoose.connect(link);
   console.log(response)
@@ -28,8 +29,8 @@ const userSchema=new mongoose.Schema({
         required:[true,"email it is required"],
         unique:[true,"you are already sign up"],
         validate:[function(){
-            return emailvalidator.validate(this.email)
-        },"enter right email"]
+             return emailvalidator.validate(this.email)
+            },"enter right email"]
 
     },
     Password:{
@@ -48,6 +49,7 @@ const userSchema=new mongoose.Schema({
         type:String
     },
     expireToken:Date
+
    
     
 })
@@ -60,14 +62,10 @@ userSchema.methods.createResetToken=function(){
 const resetToken=crypto.randomBytes(32).toString("hex");
 this.resetToken=resetToken;
 return resetToken;
-
 }
 userSchema.methods.resetpasswordhandler=function(Password){
 this.Password=Password;
-
 this.resetToken=undefined;
-
-
 }
 
 

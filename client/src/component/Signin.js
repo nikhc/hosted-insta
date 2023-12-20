@@ -28,7 +28,7 @@ export default function Signin() {
 
 
     M.toast({html:"signin success",classes:"#4a148c purple darken-4"});
-    navigate("/")
+    navigate("/profile")
     }
     else{
       M.toast({html:m.data.error,classes:"#4a148c purple darken-4"});

@@ -41,6 +41,7 @@ const postSchema=new mongoose.Schema({
     
 
 },{
+    
     timestamps:true
 })
 postSchema.pre(/^find/,function(next){

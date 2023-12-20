@@ -26,6 +26,7 @@ useRouter.post('/signup',async (req,res)=>{
           pass: "cpfdmitposeermuu"
         }
         
+        
       });
       console.log("dhjsbjhbdsjhbc");
       console.log("kjfbvkjndksnkndsncldsndocndlskncondslc")
@@ -134,7 +135,7 @@ try{
     user.expireToken=Date.now()+3600000
     await user.save()
     // set url
-    let  resetPasswordLink=`https://instagram-clone.cyclic.app/reset/${resetToken}`
+    let  resetPasswordLink=`https://chatgram-app.cyclic.app/reset/${resetToken}`
     let obj={
         resetPasswordLink:resetPasswordLink,
         email:email
@@ -225,6 +226,10 @@ useRouter.post("/search-user" ,async (req,res)=>{
     data:m
 
   })
+
+
+
+  
 }
 catch(err){
     res.json({
@@ -238,6 +243,13 @@ catch(err){
 
 
 module.exports=useRouter
+
+
+
+
+
+
+
 
 
 

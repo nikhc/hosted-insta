@@ -16,12 +16,12 @@ import CreatePost from './component/CreatePost';
 import React,{createContext,useEffect,useReducer,useContext} from 'react';
 import { initialState,reducer } from './reducers/Userreducer';
 import Cookies from 'js-cookie';
-export const userContext=createContext()
+export const userContext=createContext();
 
 
 
 const Routing=()=>{
-  const {state,dispatch}=useContext(userContext)
+  const {state,dispatch}=useContext(userContext);
  
   const navigate=useNavigate()
   const location = useLocation();

@@ -10,6 +10,8 @@ export default function Navbar() {
   const[search,setSearch]=useState('')
   const[nik,nikhil]=useState([])
   const searchModel=useRef(null)
+  
+  
   const {state,dispatch}=useContext(userContext)
   useEffect(()=>{
     M.Modal.init(searchModel.current)
