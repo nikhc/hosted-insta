@@ -135,7 +135,7 @@ try{
     user.expireToken=Date.now()+3600000
     await user.save()
     // set url
-    let  resetPasswordLink=`https://chatgram-app.cyclic.app/reset/${resetToken}`
+    let  resetPasswordLink=`https://hosted-insta.onrender.com/reset/${resetToken}`
     let obj={
         resetPasswordLink:resetPasswordLink,
         email:email
